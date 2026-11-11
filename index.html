@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AMBARA: buy and sell fashion in Rwanda. Shop, sell, and grow.">
+<title>AMBARA Rwanda</title>
+<link rel="icon" type="image/png" href="images/platform-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f5f9; --surface:#ffffff; --ink:#0f2238; --muted:#566677; --line:#dbe3ec;
+  --brand:#0f3b6b; --brand-ink:#ffffff; --deep:#0a2745; --deep-ink:#d3e2f3;
+  --sun:#f5b301; --sun-ink:#2a1f00; --leaf:#178a4c; --leaf-ink:#ffffff; --coral:#c9343a;
+  --chip:#e8eef5; --shadow:0 1px 2px rgba(15,34,56,.06),0 8px 24px rgba(15,34,56,.07);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1520; --surface:#142130; --ink:#e8eef6; --muted:#9aabbd; --line:#243448;
+    --brand:#12355d; --brand-ink:#ffffff; --deep:#07111c; --deep-ink:#a9bdd2;
+    --leaf:#3ecf83; --leaf-ink:#04210f; --coral:#ff7a7f; --chip:#1c2d41;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c1520; --surface:#142130; --ink:#e8eef6; --muted:#9aabbd; --line:#243448;
+  --brand:#12355d; --brand-ink:#ffffff; --deep:#07111c; --deep-ink:#a9bdd2;
+  --leaf:#3ecf83; --leaf-ink:#04210f; --coral:#ff7a7f; --chip:#1c2d41;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.awning{height:9px;background:repeating-linear-gradient(90deg,var(--sun) 0 26px,var(--surface) 26px 52px)}
+.topbar{background:var(--deep);color:var(--deep-ink);font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-block:7px;flex-wrap:wrap}
+.topbar span{min-width:0}
+.topbar b{color:#fff;font-weight:500}
+
+.head{background:var(--surface);border-bottom:1px solid var(--line)}
+.head .wrap{display:flex;align-items:center;gap:12px 16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand img{width:72px;height:72px;object-fit:contain;flex:none}
+.brand b{display:block;font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1}
+.brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:10px;border:2px solid transparent;font-weight:700;font-size:15px;line-height:1.1;cursor:pointer;text-decoration:none;text-align:center}
+.btn-sun{background:var(--sun);color:var(--sun-ink)}
+.btn-sun:hover{filter:brightness(.94)}
+.btn-line{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--chip)}
+.btn-leaf{background:var(--leaf);color:var(--leaf-ink)}
+.btn-leaf:hover{filter:brightness(.94)}
+.btn-brand{background:var(--brand);color:var(--brand-ink)}
+.btn-brand:hover{filter:brightness(1.15)}
+.btn-sm{padding:8px 12px;font-size:13px;border-radius:8px}
+
+.nav{background:var(--brand);color:var(--brand-ink)}
+.nav .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav .wrap::-webkit-scrollbar{display:none}
+.nav button{flex:none;background:none;border:0;border-bottom:3px solid transparent;color:inherit;opacity:.82;padding:14px 14px 11px;font-weight:500;font-size:15px;cursor:pointer;white-space:nowrap}
+.nav button:hover{opacity:1}
+.nav button[aria-current="true"]{opacity:1;border-bottom-color:var(--sun);font-weight:700}
+
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding-block:42px 34px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5.2vw,54px);line-height:1.04;letter-spacing:-.03em;margin:10px 0 14px;text-wrap:balance}
+.lead{font-size:18px;color:var(--muted);margin:0 0 22px;max-width:52ch}
+.hsearch{display:flex;gap:8px;max-width:560px}
+.hsearch input{flex:1;min-width:0}
+input[type=search],input[type=text],input[type=tel],input[type=number],select,textarea{width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 13px;font-size:16px}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.8}
+.chips{display:flex;flex-wrap:wrap;gap:8px 16px;margin:18px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.chips li{display:flex;align-items:center;gap:7px}
+.chips svg{width:16px;height:16px;color:var(--leaf);flex:none}
+.collage{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.collage .tile{border-radius:16px;aspect-ratio:3/4;box-shadow:var(--shadow)}
+.collage .tile:nth-child(2){transform:translateY(22px)}
+
+.tile{position:relative;display:block;background:var(--tile,#e8eef5);overflow:hidden}
+.tile svg{display:block;width:100%;height:100%;padding:12%}
+.tile img{display:block;width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:var(--surface);color:var(--ink);font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.badge.new{background:var(--leaf);color:var(--leaf-ink)}
+
+.market{padding-block:14px 44px}
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:2px solid var(--line);scrollbar-width:thin}
+.tab{flex:none;display:flex;align-items:center;gap:8px;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:14px 16px;font-weight:600;font-size:16px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--sun)}
+.tab .n{font-size:12px;font-weight:700;background:var(--chip);color:var(--ink);border-radius:999px;padding:2px 9px}
+.tab[aria-pressed="true"] .n{background:var(--brand);color:var(--brand-ink)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 4px}
+.toolbar .grow{flex:1 1 240px;min-width:0}
+.toolbar select{width:auto;min-width:150px}
+.count{margin:0 0 0 auto;color:var(--muted);font-size:14px}
+.demo{margin:10px 0 0;font-size:13px;color:var(--muted);background:var(--chip);border-radius:10px;padding:9px 12px}
+.grid{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .15s ease}
+.card:hover{transform:translateY(-3px)}
+.card .tile{aspect-ratio:1/1}
+.cbody{display:block;padding:12px 14px 15px}
+.ctitle{display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600;font-size:15px;line-height:1.3;min-height:2.6em}
+.cprice{display:block;margin-top:8px;font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.cmeta{display:block;margin-top:2px;font-size:13px;color:var(--muted)}
+.empty{margin:26px 0 0;text-align:center;padding:40px 16px;border:2px dashed var(--line);border-radius:16px}
+.empty h3{font-family:var(--display);font-size:22px;margin:0 0 6px}
+.empty p{margin:0 0 16px;color:var(--muted)}
+
+.band{padding-block:44px}
+.band h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,36px);letter-spacing:-.025em;line-height:1.1;margin:0 0 22px;text-wrap:balance}
+.how{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}
+.panel h3{font-family:var(--display);font-size:21px;margin:0 0 16px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.steps .no{width:34px;height:34px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:700;font-size:15px}
+.steps strong{display:block}
+.steps span{color:var(--muted);font-size:15px}
+.sell{background:var(--sun);color:var(--sun-ink)}
+.sell .wrap{display:flex;gap:20px 32px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:34px}
+.sell h2{margin:0 0 6px;font-family:var(--display);font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em}
+.sell p{margin:0;max-width:60ch}
+.sell .btn-brand{background:var(--deep);color:#fff}
+
+.foot{background:var(--deep);color:var(--deep-ink);font-size:15px}
+.foot .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px;padding-block:38px 30px}
+.foot h3{margin:0 0 10px;color:#fff;font-family:var(--display);font-size:17px}
+.foot p{margin:0 0 8px}
+.foot b{color:#fff}
+.foot ul{margin:0;padding-left:18px}
+.foot li{margin-bottom:6px}
+.legal{border-top:1px solid rgba(255,255,255,.12);font-size:13px}
+.legal .wrap{display:block;padding-block:14px}
+
+.overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow:auto;background:rgba(6,16,28,.62);padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet{position:relative;width:100%;max-width:920px;margin:auto;background:var(--surface);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.sheet.narrow{max-width:640px}
+.x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+.x svg{width:18px;height:18px}
+.itemgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.itemgrid .tile{border-radius:18px 0 0 18px;min-height:380px;aspect-ratio:auto}
+.itemgrid .info{padding:28px 28px 26px;min-width:0}
+.cat{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--chip);border-radius:999px;padding:4px 11px}
+.info h2{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.12;letter-spacing:-.02em;margin:12px 44px 8px 0}
+.price{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.02em;margin:0 0 14px;font-variant-numeric:tabular-nums}
+dl.spec{display:grid;grid-template-columns:auto 1fr;gap:7px 18px;margin:0 0 14px;font-size:15px}
+dl.spec dt{color:var(--muted)}
+dl.spec dd{margin:0;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.desc{margin:0 0 18px;color:var(--muted)}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px}
+.btnrow .btn{flex:1 1 150px}
+.linkbtn{background:none;border:0;padding:6px 0;margin-top:12px;font-size:14px;color:var(--muted);text-decoration:underline;cursor:pointer}
+.pay{margin-top:16px;border:1.5px dashed var(--line);border-radius:12px;padding:16px;background:var(--bg)}
+.pay h3{margin:0 0 10px;font-family:var(--display);font-size:18px}
+.payrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.payrow:last-of-type{border-bottom:0}
+.payrow .k{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.payrow .v{display:block;font-size:18px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;user-select:all}
+.payrow small{color:var(--muted)}
+.pay ol{margin:12px 0 0;padding-left:20px;color:var(--muted);font-size:14px}
+.pay .btn{margin-top:12px}
+.form{padding:28px}
+.form h2{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 44px 6px 0}
+.form .sub{color:var(--muted);margin:0 0 18px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:700}
+.field .req{color:var(--coral)}
+textarea{min-height:84px;resize:vertical}
+.err{display:none;margin:12px 0 0;color:var(--coral);font-weight:600;font-size:14px}
+.err.show{display:block}
+.preview{margin-top:16px}
+.preview textarea{min-height:130px;font-size:14px;background:var(--bg)}
+.note{font-size:13px;color:var(--muted);margin:10px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:80;background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:calc(100vw - 32px)}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:30px 24px;gap:26px}
+  .collage .tile:nth-child(2){transform:none}
+  .collage .tile{aspect-ratio:1/1}
+  .how{grid-template-columns:1fr}
+  .foot .wrap{grid-template-columns:1fr}
+  .itemgrid{grid-template-columns:1fr}
+  .itemgrid .tile{border-radius:18px 18px 0 0;aspect-ratio:4/3;min-height:0}
+  .itemgrid .tile svg{padding:6% 24%}
+  .itemgrid .info{padding:20px 18px 22px}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cbody{padding:10px 11px 13px}
+  .ctitle{font-size:14px}
+  .cprice{font-size:17px}
+  .fgrid{grid-template-columns:1fr}
+  .form{padding:22px 18px}
+  .actions{width:100%}
+  .actions .btn{flex:1 1 0}
+  .topbar .hide-s{display:none}
+  .count{margin-left:0;width:100%}
+  .brand b{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="awning" aria-hidden="true"></div>
+<div class="topbar">
+  <div class="wrap">
+    <span class="hide-s">Murakaza neza. Welcome to AMBARA.</span>
+    <span>Email <b id="topEmail"></b></span>
+    <span class="hide-s">WhatsApp <b id="topWa"></b></span>
+  </div>
+</div>
+
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="#" id="brandLink" aria-label="AMBARA, back to top">
+      <img src="images/platform-logo.png" alt="AMBARA — Shop, Sell, Grow">
+      <span><b>AMBARA</b><small>Shop · Sell · Grow</small></span>
+    </a>
+    <div class="actions">
+      <button class="btn btn-sun" type="button" data-compose="sell">Sell an item</button>
+      <button class="btn btn-line" type="button" data-compose="request">Request an item</button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap" id="navList"></div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Sneakers · Shoes · Clothes · Bags</p>
+        <h1>Buy and sell fashion across Rwanda</h1>
+        <p class="lead">Browse listings, message the seller on WhatsApp, and pay them directly with Mobile Money. Selling is simple too: send us your item and photos, and buyers pay you directly.</p>
+        <form class="hsearch" id="heroForm" role="search">
+          <label class="sr" for="heroQ">Search listings</label>
+          <input id="heroQ" type="search" placeholder="Search sneakers, dresses, boots…" autocomplete="off">
+          <button class="btn btn-sun" type="submit">Search</button>
+        </form>
+        <ul class="chips">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg>No account needed</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg>Chat with the seller on WhatsApp</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg>Pay the seller directly by Mobile Money</li>
+        </ul>
+      </div>
+      <div class="collage" id="collage" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="market wrap" id="market" aria-label="Listings">
+    <div class="tabs" id="tabs" role="group" aria-label="Categories"></div>
+    <div class="toolbar">
+      <div class="grow">
+        <label class="sr" for="q">Search listings</label>
+        <input id="q" type="search" placeholder="Search by item, size or district" autocomplete="off">
+      </div>
+      <label class="sr" for="cond">Condition</label>
+      <select id="cond">
+        <option value="all">Any condition</option>
+        <option>New</option><option>Like new</option><option>Good</option><option>Fair</option>
+      </select>
+      <label class="sr" for="sort">Sort</label>
+      <select id="sort">
+        <option value="new">Newest first</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+      </select>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+    <p class="demo" id="demoNote" hidden>These are sample listings that show how AMBARA works. Real items from sellers will appear here.</p>
+    <ul class="grid" id="grid"></ul>
+    <div class="empty" id="empty" hidden>
+      <h3>Nothing matches that search</h3>
+      <p>Try another word, or tell us what you want and we will look for it.</p>
+      <button class="btn btn-sun" type="button" data-compose="request">Request an item</button>
+    </div>
+  </section>
+
+  <section class="band wrap" id="how">
+    <h2>How AMBARA works</h2>
+    <div class="how">
+      <div class="panel">
+        <h3>If you are buying</h3>
+        <ol class="steps">
+          <li><span class="no">1</span><div><strong>Pick an item</strong><span>Open any listing to see the price, size, condition and where it is.</span></div></li>
+          <li><span class="no">2</span><div><strong>Message the seller</strong><span>Ask on WhatsApp to confirm the item is available and agree on pickup or delivery.</span></div></li>
+          <li><span class="no">3</span><div><strong>Pay the seller</strong><span>Send the amount to the seller's Mobile Money number shown on the listing, then share the transaction ID with them.</span></div></li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>If you are selling</h3>
+        <ol class="steps">
+          <li><span class="no">1</span><div><strong>Fill in the sell form</strong><span>Describe the item, set your price and give the Mobile Money number buyers should pay.</span></div></li>
+          <li><span class="no">2</span><div><strong>Pay the listing fee and send photos</strong><span>Pay AMBARA's listing fee, then email or WhatsApp us your details with 2 to 4 clear photos.</span></div></li>
+          <li><span class="no">3</span><div><strong>We publish your listing</strong><span>Buyers message you on WhatsApp and pay you directly.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sell">
+    <div class="wrap">
+      <div>
+        <h2>Got clothes or sneakers to sell?</h2>
+        <p id="sellFeeLine">Send us the details and photos and we will put your item in front of buyers.</p>
+      </div>
+      <button class="btn btn-brand" type="button" data-compose="sell">Sell an item</button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div>
+      <h3>AMBARA</h3>
+      <p>A simple open market for sneakers, shoes, clothes, bags and more. AMBARA connects buyers and sellers across Rwanda.</p>
+      <p id="footCity"></p>
+    </div>
+    <div>
+      <h3>Contact us</h3>
+      <p>Email: <b id="footEmail"></b></p>
+      <p>WhatsApp: <b id="footWa"></b></p>
+      <p><a id="footWaLink" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a></p>
+    </div>
+    <div>
+      <h3>Shop safely</h3>
+      <ul>
+        <li>Check the item before you pay in full.</li>
+        <li>Pay the seller only on the number shown on the listing.</li>
+        <li>Meet in a public place for pickups.</li>
+        <li>Keep your payment confirmation message.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal"><div class="wrap">© 2026 AMBARA. Prices are in Rwandan francs (RWF).</div></div>
+</footer>
+
+<!-- Item detail -->
+<div class="overlay" id="itemOverlay" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="itemTitle" id="itemSheet"></div>
+</div>
+
+<!-- Sell / request form -->
+<div class="overlay" id="formOverlay" hidden>
+  <div class="sheet narrow" role="dialog" aria-modal="true" aria-labelledby="formTitle" id="formSheet"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+"use strict";
+
+const SITE = {
+  name: "AMBARA",
+  email: "beatriceuwihirwe527@gmail.com",
+  whatsapp: "250781162830",
+  phoneDisplay: "+250 781 162 830",
+  city: "Kigali, Rwanda",
+  currency: "RWF",
+  listingFeeRWF: 1000,
+  showDemoNotice: true
+};
+
+const PAYMENT = {
+  momoName: "Beatrice Uwihirwe",
+  momoNumber: "0781 162 830",
+  momoPayCode: "",
+  airtelNumber: "",
+  bank: "",
+  cardLink: ""
+};
+
+const LISTINGS = [
+  { id:"s01", title:"Nike Air Force 1 Retro Sneakers", category:"sneakers", price:45000, condition:"Like new", size:"EU 42", district:"Kicukiro", seller:"Aline", momo:"0780 000 001", momoName:"Aline U.", whatsapp:"250780000001", posted:"2026-11-10", desc:"Pastel retro sneakers in like-new condition.", img:"images/product-sneakers-retro.png", photoHasConditionBadge:true },
+  { id:"s02", title:"Urban High-Top Black Street Sneakers", category:"sneakers", price:38000, condition:"New", size:"EU 43", district:"Gasabo", seller:"Eric", momo:"0780 000 002", momoName:"Eric N.", whatsapp:"250780000002", posted:"2026-11-09", desc:"Black and red high-top street sneakers.", img:"images/product-sneakers-high-top.png", photoHasConditionBadge:true },
+  { id:"s05", title:"Classic Premium Leather Oxford Shoes", category:"shoes", price:32000, condition:"Like new", size:"EU 43", district:"Nyarugenge", seller:"Jean Paul", momo:"0780 000 005", momoName:"Jean Paul H.", whatsapp:"250780000005", posted:"2026-11-09", desc:"Brown leather Oxford shoes in excellent condition.", img:"images/product-shoes-oxford.png", photoHasConditionBadge:true },
+  { id:"s08", title:"Elegance Floral Summer Wrap Dress", category:"clothes", price:18000, condition:"New", size:"M", district:"Gasabo", seller:"Aline", momo:"0780 000 001", momoName:"Aline U.", whatsapp:"250780000001", posted:"2026-11-10", desc:"Red floral wrap dress.", img:"images/product-dress.png", photoHasConditionBadge:true },
+  { id:"s12", title:"Designer Red Leather Handbag", category:"bags", price:9000, condition:"New", size:"One size", district:"Huye", seller:"Chantal", momo:"0780 000 006", momoName:"Chantal I.", whatsapp:"250780000006", posted:"2026-11-07", desc:"Red structured handbag with a top handle.", img:"images/product-handbag.png", photoHasConditionBadge:true },
+  { id:"s13", title:"Cozy Fleece Grey Unisex Hoodie", category:"clothes", price:12000, condition:"Good", size:"M", district:"Kicukiro", seller:"Patrick", momo:"0780 000 004", momoName:"Patrick K.", whatsapp:"250780000004", posted:"2026-11-06", desc:"Grey fleece hoodie with a cozy casual fit.", img:"images/product-hoodie.png", photoHasConditionBadge:true },
+  { id:"s14", title:"Vintage Denim Jacket - Medium Blue", category:"clothes", price:18000, condition:"Good", size:"M", district:"Nyarugenge", seller:"Eric", momo:"0780 000 002", momoName:"Eric N.", whatsapp:"250780000002", posted:"2026-11-05", desc:"Medium-blue vintage denim jacket.", img:"images/product-denim-jacket.png", photoHasConditionBadge:true },
+  { id:"s15", title:"Minimalist Silver Chronograph Watch", category:"accessories", price:28000, condition:"New", size:"40mm", district:"Gasabo", seller:"Patrick", momo:"0780 000 004", momoName:"Patrick K.", whatsapp:"250780000004", posted:"2026-11-11", desc:"Silver chronograph watch with a brown leather strap.", img:"images/product-watch.png", photoHasConditionBadge:true },
+  { id:"s16", title:"Polarized Retro Sunglasses - Black", category:"accessories", price:9000, condition:"New", size:"One size", district:"Nyarugenge", seller:"Jean Paul", momo:"0780 000 005", momoName:"Jean Paul H.", whatsapp:"250780000005", posted:"2026-11-11", desc:"Retro polarized sunglasses with dark lenses.", img:"images/product-sunglasses.png", photoHasConditionBadge:true },
+  { id:"s17", title:"Black Embroidery Baseball Cap", category:"accessories", price:6000, condition:"New", size:"Adjustable", district:"Rubavu", seller:"Patrick", momo:"0780 000 004", momoName:"Patrick K.", whatsapp:"250780000004", posted:"2026-11-11", desc:"Adjustable mesh-back baseball cap.", img:"images/product-cap.png", photoHasConditionBadge:true }
+];
+
+const DISTRICTS = ["Nyarugenge","Gasabo","Kicukiro","Huye","Musanze","Rubavu","Rwamagana","Other"];
+const CATS = [
+  { id:"all", label:"All" }, { id:"sneakers", label:"Sneakers" }, { id:"shoes", label:"Shoes" },
+  { id:"clothes", label:"Clothes" }, { id:"bags", label:"Bags" },
+  { id:"accessories", label:"Accessories" }, { id:"others", label:"Others" }
+];
+
+const $ = (s, el) => (el || document).querySelector(s);
+const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const money = n => Number(n).toLocaleString("en-US") + " " + SITE.currency;
+const catLabel = id => (CATS.find(c => c.id === id) || {}).label || id;
+function ago(d){
+  const days = Math.floor((Date.now() - new Date(d + "T00:00:00").getTime()) / 86400000);
+  if (days <= 0) return "Today";
+  if (days === 1) return "Yesterday";
+  if (days < 14) return days + " days ago";
+  return Math.floor(days / 7) + " weeks ago";
+}
+const mailto = (subject, body) => "mailto:" + SITE.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+const waLink = (text, num) => "https://wa.me/" + (num || SITE.whatsapp) + "?text=" + encodeURIComponent(text);
+
+const INK = "#0f2238";
+const S = `stroke="${INK}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
+const ART = {
+  sneaker: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M22 140h158c4 0 6 3 6 7v3c0 5-4 8-9 8H30c-6 0-10-4-10-9z" fill="#fff" ${S}/><path d="M26 140c0-24 14-40 32-47l8-26c3-8 13-11 20-5l22 20c18 6 42 15 58 29 8 7 12 16 12 29z" fill="${c}" ${S}/><path d="M150 106c18 8 28 20 28 34h-34c2-12 3-22 6-34z" fill="rgba(0,0,0,.16)"/><path d="M52 98c22 6 36 18 40 42" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M88 70l12 8M80 82l14 9M72 94l14 8" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>`,
+  shoe: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M20 152h160v11H20z" fill="${INK}"/><path d="M24 152V112c0-10 8-18 18-18h30c8 0 14 6 24 14 12 9 34 12 50 22 14 6 28 12 34 22z" fill="${c}" ${S}/><path d="M46 100c4 14 12 22 26 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="4" stroke-linecap="round"/><ellipse cx="140" cy="136" rx="22" ry="5" fill="rgba(255,255,255,.35)"/><path d="M24 152h34v11H24z" fill="rgba(0,0,0,.35)"/></svg>`,
+  tee: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M70 40 40 58l16 32 18-8v78h52V82l18 8 16-32-30-18c-6 12-54 12-60 0z" fill="${c}" ${S}/><path d="M78 42c8 14 36 14 44 0" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4" stroke-linecap="round"/></svg>`,
+  bag: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M74 80c0-42 52-42 52 0" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M48 78h104l8 88H40z" fill="${c}" ${S}/><path d="M70 110h60v36H70z" fill="rgba(255,255,255,.28)"/></svg>`,
+  cap: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M38 124c0-44 30-68 62-68s62 24 62 68z" fill="${c}" ${S}/><path d="M56 124c34-10 96-4 128 14-30 10-84 10-128-4z" fill="${c}" ${S}/><path d="M56 124c34-10 96-4 128 14-30 10-84 10-128-4z" fill="rgba(0,0,0,.2)"/><path d="M100 58v64" stroke="rgba(255,255,255,.45)" stroke-width="3"/><circle cx="100" cy="54" r="5" fill="${INK}"/></svg>`,
+  box: c => `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M40 84h120v82H40z" fill="${c}" ${S}/><path d="M32 64h136v22H32z" fill="${c}" ${S}/><path d="M32 64h136v22H32z" fill="rgba(255,255,255,.25)"/><path d="M92 64h16v102H92z" fill="rgba(255,255,255,.5)"/></svg>`
+};
+function artHTML(i){
+  if (i.img) return `<img src="${esc(i.img)}" alt="${esc(i.title)}" loading="lazy">`;
+  return (ART[i.art] || ART.box)(i.color || "#8a97a6");
+}
+
+$("#topEmail").textContent = SITE.email;
+$("#topWa").textContent = SITE.phoneDisplay;
+$("#footEmail").textContent = SITE.email;
+$("#footWa").textContent = SITE.phoneDisplay;
+$("#footCity").textContent = SITE.city;
+$("#footWaLink").href = waLink("Hello " + SITE.name + ", I have a question.");
+$("#demoNote").hidden = !SITE.showDemoNotice;
+if (SITE.listingFeeRWF > 0) $("#sellFeeLine").textContent = "Listing costs " + money(SITE.listingFeeRWF) + ". Pay it to " + SITE.name + ", send us your details and photos, and buyers will pay you directly.";
+
+$("#collage").innerHTML = ["hero-sneakers.png","hero-dress.png","hero-bag.png"]
+  .map(image => `<span class="tile"><img src="images/${image}" alt="" loading="eager"></span>`).join("");
+
+const state = { cat:"all", q:"", cond:"all", sort:"new" };
+
+const NAV = [
+  { label:"Home", act:"home" }, { label:"Sneakers", cat:"sneakers" }, { label:"Shoes", cat:"shoes" },
+  { label:"Clothes", cat:"clothes" }, { label:"Bags", cat:"bags" }, { label:"Accessories", cat:"accessories" },
+  { label:"How it works", act:"how" }, { label:"Contact", act:"contact" }
+];
+function renderNav(){
+  $("#navList").innerHTML = NAV.map((n, k) => {
+    const cur = n.cat ? state.cat === n.cat : (n.act === "home" && state.cat === "all");
+    return `<button type="button" data-nav="${k}"${cur ? ' aria-current="true"' : ""}>${esc(n.label)}</button>`;
+  }).join("");
+}
+function scrollToEl(sel){ const el = $(sel); if (el) el.scrollIntoView({ behavior:"smooth", block:"start" }); }
+$("#navList").addEventListener("click", e => {
+  const b = e.target.closest("[data-nav]"); if (!b) return;
+  const n = NAV[+b.dataset.nav];
+  if (n.cat){ setCat(n.cat); scrollToEl("#market"); }
+  else if (n.act === "home"){ setCat("all"); window.scrollTo({ top:0, behavior:"smooth" }); }
+  else if (n.act === "how") scrollToEl("#how");
+  else if (n.act === "contact") scrollToEl("#contact");
+});
+$("#brandLink").addEventListener("click", e => { e.preventDefault(); setCat("all"); window.scrollTo({ top:0, behavior:"smooth" }); });
+
+function setCat(id){ state.cat = id; renderTabs(); renderGrid(); renderNav(); }
+function renderTabs(){
+  $("#tabs").innerHTML = CATS.map(c => {
+    const n = c.id === "all" ? LISTINGS.length : LISTINGS.filter(i => i.category === c.id).length;
+    return `<button type="button" class="tab" data-cat="${c.id}" aria-pressed="${state.cat === c.id}">${esc(c.label)}<span class="n">${n}</span></button>`;
+  }).join("");
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("[data-cat]"); if (b) setCat(b.dataset.cat); });
+
+function visible(){
+  const q = state.q.trim().toLowerCase();
+  const a = LISTINGS.filter(i =>
+    (state.cat === "all" || i.category === state.cat) &&
+    (state.cond === "all" || i.condition === state.cond) &&
+    (!q || [i.title, i.desc, i.seller, i.district, i.size, catLabel(i.category)].join(" ").toLowerCase().includes(q)));
+  if (state.sort === "new") a.sort((x, y) => y.posted.localeCompare(x.posted));
+  if (state.sort === "low") a.sort((x, y) => x.price - y.price);
+  if (state.sort === "high") a.sort((x, y) => y.price - x.price);
+  return a;
+}
+function renderGrid(){
+  const a = visible();
+  $("#grid").innerHTML = a.map(i => `
+    <li><button type="button" class="card" data-id="${esc(i.id)}" aria-label="${esc(i.title)}, ${money(i.price)}">
+      <span class="tile" style="--tile:${esc(i.tile || "#e8eef5")}">${artHTML(i)}${i.photoHasConditionBadge ? "" : `<span class="badge${i.condition === "New" ? " new" : ""}">${esc(i.condition)}</span>`}</span>
+      <span class="cbody"><span class="ctitle">${esc(i.title)}</span><span class="cprice">${money(i.price)}</span><span class="cmeta">${esc(i.size)} · ${esc(i.district)}</span></span>
+    </button></li>`).join("");
+  $("#empty").hidden = a.length > 0;
+  $("#count").textContent = a.length + (a.length === 1 ? " item" : " items");
+}
+$("#grid").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) openItem(b.dataset.id); });
+
+function setQuery(v){ state.q = v; $("#q").value = v; $("#heroQ").value = v; renderGrid(); }
+$("#q").addEventListener("input", e => setQuery(e.target.value));
+$("#heroQ").addEventListener("input", e => setQuery(e.target.value));
+$("#heroForm").addEventListener("submit", e => { e.preventDefault(); scrollToEl("#market"); });
+$("#cond").addEventListener("change", e => { state.cond = e.target.value; renderGrid(); });
+$("#sort").addEventListener("change", e => { state.sort = e.target.value; renderGrid(); });
+
+let toastTimer;
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2600);
+}
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); toast("Copied"); return; } catch (e) { }
+  try {
+    const ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand("copy"); document.body.removeChild(ta);
+    toast(ok ? "Copied" : "Press and hold the text to copy it");
+  } catch (e) { toast("Press and hold the text to copy it"); }
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-copy]"); if (b) copyText(b.dataset.copy); });
+
+let lastFocus = null;
+function lockScroll(on){ document.body.style.overflow = on ? "hidden" : ""; }
+function openOverlay(ov){
+  lastFocus = document.activeElement; ov.hidden = false; lockScroll(true);
+  const x = $(".x", ov); if (x) x.focus();
+}
+function closeOverlay(ov){
+  if (ov.hidden) return; ov.hidden = true;
+  if ($("#itemOverlay").hidden && $("#formOverlay").hidden) lockScroll(false);
+  if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+}
+const XBTN = `<button type="button" class="x" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l12 12M16 4 4 16"/></svg></button>`;
+["#itemOverlay", "#formOverlay"].forEach(sel => {
+  const ov = $(sel);
+  ov.addEventListener("click", e => {
+    if (e.target === ov || e.target.closest("[data-close]")) { sel === "#itemOverlay" ? closeItem() : closeOverlay(ov); }
+  });
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){ if (!$("#formOverlay").hidden) closeOverlay($("#formOverlay")); else if (!$("#itemOverlay").hidden) closeItem(); }
+});
+
+function payRow(k, v, extra){
+  return `<div class="payrow"><div><span class="k">${esc(k)}</span><strong class="v">${esc(v)}</strong>${extra ? `<small>${esc(extra)}</small>` : ""}</div><button type="button" class="btn btn-line btn-sm" data-copy="${esc(v)}">Copy</button></div>`;
+}
+function payHTML(amount, ref){
+  const rows = [];
+  if (amount) rows.push(payRow("Amount to send", amount, ""));
+  if (PAYMENT.momoNumber) rows.push(payRow("MTN MoMo number", PAYMENT.momoNumber, PAYMENT.momoName));
+  if (PAYMENT.momoPayCode) rows.push(payRow("MoMo Pay code", PAYMENT.momoPayCode, PAYMENT.momoName));
+  if (PAYMENT.airtelNumber) rows.push(payRow("Airtel Money number", PAYMENT.airtelNumber, PAYMENT.momoName));
+  if (PAYMENT.bank) rows.push(payRow("Bank transfer", PAYMENT.bank, ""));
+  rows.push(payRow("Reference", ref, "Write this as the payment reason"));
+  const card = PAYMENT.cardLink ? `<a class="btn btn-brand" href="${esc(PAYMENT.cardLink)}" target="_blank" rel="noopener">Pay by card</a>` : "";
+  return `<div class="pay"><h3>Pay ${esc(SITE.name)}</h3>${rows.join("")}${card}
+    <ol><li>Open MTN MoMo (dial *182# or use the MoMo app) and send the amount above.</li><li>Use the reference as the payment reason.</li><li>Send us the transaction ID together with your listing details.</li></ol></div>`;
+}
+function sellerPayHTML(i, code){
+  const rows = [payRow("Amount to send", money(i.price), "")];
+  if (i.momo) rows.push(payRow("Seller's MoMo number", i.momo, i.momoName || i.seller));
+  rows.push(payRow("Reference", code, "Write this as the payment reason"));
+  const none = i.momo ? "" : `<p class="note">This seller has not added payment details yet. Ask them on WhatsApp.</p>`;
+  return `<div class="pay"><h3>Pay the seller</h3>${rows.join("")}${none}
+    <ol><li>Message the seller first to confirm the item is available and agree on pickup or delivery.</li><li>Open MTN MoMo (dial *182# or use the MoMo app) and send the amount to the number above.</li><li>Keep the confirmation message and send the seller the transaction ID.</li></ol></div>`;
+}
+
+let openId = null;
+function openItem(id){ if (location.hash !== "#item-" + id) location.hash = "item-" + id; showItem(id); }
+function closeItem(){ hideItem(); if (location.hash.indexOf("#item-") === 0) location.hash = ""; }
+function showItem(id){
+  const i = LISTINGS.find(x => x.id === id); if (!i || openId === id) return;
+  openId = id;
+  const code = "AMBARA-" + i.id.toUpperCase();
+  const subject = SITE.name + ": question about " + i.title + " (" + code + ")";
+  const body = [
+    "Hello " + SITE.name + ",",
+    "",
+    "I have a question about this item:",
+    i.title,
+    "Price: " + money(i.price),
+    "Item code: " + code,
+    "",
+    "My question:",
+    "",
+    "My name:",
+    "My phone:",
+    "",
+    "Thank you."
+  ].join("\n");
+  $("#itemSheet").innerHTML = `${XBTN}
+    <div class="itemgrid">
+      <span class="tile" style="--tile:${esc(i.tile || "#e8eef5")}">${artHTML(i)}</span>
+      <div class="info">
+        <span class="cat">${esc(catLabel(i.category))}</span>
+        <h2 id="itemTitle">${esc(i.title)}</h2>
+        <p class="price">${money(i.price)}</p>
+        <dl class="spec">
+          <dt>Condition</dt><dd>${esc(i.condition)}</dd>
+          <dt>Size</dt><dd>${esc(i.size)}</dd>
+          <dt>Location</dt><dd>${esc(i.district)}</dd>
+          <dt>Seller</dt><dd>${esc(i.seller)}</dd>
+          <dt>Posted</dt><dd>${esc(ago(i.posted))}</dd>
+          <dt>Item code</dt><dd>${esc(code)}</dd>
+        </dl>
+        <p class="desc">${esc(i.desc)}</p>
+        <div class="btnrow">
+          <button class="btn btn-sun" type="button" id="payToggle" aria-expanded="false">Pay seller</button>
+          <a class="btn btn-leaf" href="${esc(waLink("Hello " + i.seller + ", I am interested in " + i.title + " (" + code + ") on " + SITE.name + ". Is it still available?", i.whatsapp))}" target="_blank" rel="noopener">WhatsApp seller</a>
+          <a class="btn btn-line" href="${esc(mailto(subject, body))}" target="_blank" rel="noopener">Email AMBARA</a>
+        </div>
+        <div id="payBox" hidden>${sellerPayHTML(i, code)}</div>
+        <p class="note">You pay the seller directly. AMBARA does not handle the money. Questions? Email <strong>${esc(SITE.email)}</strong>.</p>
+        <button type="button" class="linkbtn" data-copy="${esc(location.href.split("#")[0] + "#item-" + i.id)}">Copy link to this item</button>
+      </div>
+    </div>`;
+  $("#payToggle").addEventListener("click", e => {
+    const box = $("#payBox"); box.hidden = !box.hidden; e.currentTarget.setAttribute("aria-expanded", String(!box.hidden));
+    if (!box.hidden) box.scrollIntoView({ behavior:"smooth", block:"nearest" });
+  });
+  openOverlay($("#itemOverlay")); $("#itemOverlay").scrollTop = 0;
+}
+function hideItem(){ openId = null; closeOverlay($("#itemOverlay")); }
+function route(){
+  const m = location.hash.match(/^#item-([A-Za-z0-9]+)$/);
+  if (m && LISTINGS.some(x => x.id === m[1])) showItem(m[1]); else hideItem();
+}
+window.addEventListener("hashchange", route);
+
+document.addEventListener("click", e => { const b = e.target.closest("[data-compose]"); if (b) openCompose(b.dataset.compose); });
+
+function openCompose(kind){
+  const sell = kind === "sell";
+  const catOpts = CATS.filter(c => c.id !== "all").map(c => `<option value="${c.id}">${esc(c.label)}</option>`).join("");
+  const distOpts = DISTRICTS.map(d => `<option>${esc(d)}</option>`).join("");
+  $("#formSheet").innerHTML = `${XBTN}
+    <form class="form" id="composeForm" novalidate>
+      <h2 id="formTitle">${sell ? "Sell an item" : "Request an item"}</h2>
+      <p class="sub">${sell ? "Pay the listing fee to " + esc(SITE.name) + ", then send us your details and 2 to 4 clear photos. Buyers will pay you directly on the Mobile Money number you give below." : "Tell us what you are looking for and we will search for it and get back to you."}</p>
+      <div class="fgrid">
+        <div class="field full"><label for="f_title">${sell ? "Item name" : "What are you looking for?"} <span class="req">*</span></label><input id="f_title" type="text" placeholder="${sell ? "e.g. Black leather jacket" : "e.g. White sneakers, size 42"}" autocomplete="off"></div>
+        <div class="field"><label for="f_cat">Category</label><select id="f_cat">${catOpts}</select></div>
+        <div class="field"><label for="f_price">${sell ? "Your price (RWF)" : "Budget (RWF)"}${sell ? ' <span class="req">*</span>' : ""}</label><input id="f_price" type="number" inputmode="numeric" min="0" placeholder="e.g. 20000"></div>
+        ${sell ? `<div class="field"><label for="f_cond">Condition</label><select id="f_cond"><option>New</option><option>Like new</option><option selected>Good</option><option>Fair</option></select></div>` : ""}
+        <div class="field"><label for="f_size">Size</label><input id="f_size" type="text" placeholder="e.g. EU 42, M, W32"></div>
+        <div class="field"><label for="f_dist">District</label><select id="f_dist">${distOpts}</select></div>
+        ${sell ? `<div class="field full"><label for="f_desc">Description</label><textarea id="f_desc" placeholder="Brand, colour, how it has been used, any flaws"></textarea></div>` : ""}
+        <div class="field"><label for="f_name">Your name <span class="req">*</span></label><input id="f_name" type="text" autocomplete="name"></div>
+        <div class="field"><label for="f_phone">Your phone / WhatsApp <span class="req">*</span></label><input id="f_phone" type="tel" autocomplete="tel" placeholder="07..."></div>
+        ${sell ? `<div class="field"><label for="f_momo">MoMo number for buyers <span class="req">*</span></label><input id="f_momo" type="tel" inputmode="tel" placeholder="Number buyers will pay"></div><div class="field"><label for="f_momoname">Name on that MoMo account</label><input id="f_momoname" type="text"></div>` : ""}
+      </div>
+      ${sell && SITE.listingFeeRWF > 0 ? `<details class="pay" open style="margin-top:18px"><summary style="cursor:pointer;font-weight:700">First, pay the listing fee to ${esc(SITE.name)}: ${money(SITE.listingFeeRWF)}</summary>${payHTML(money(SITE.listingFeeRWF), "LISTING-FEE")}</details>` : ""}
+      <p class="err" id="formErr" role="alert"></p>
+      <div class="btnrow" style="margin-top:18px">
+        <a class="btn btn-sun" id="mailBtn" href="mailto:" target="_blank" rel="noopener">Send by email</a>
+        <a class="btn btn-leaf" id="waBtn" href="https://wa.me/" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <button class="btn btn-line" id="copyBtn" type="button">Copy details</button>
+      </div>
+      <p class="note">${sell ? "Remember to attach your photos to the email or WhatsApp message. " : ""}If nothing opens, copy the details below and send them to <strong>${esc(SITE.email)}</strong>.</p>
+      <div class="preview"><label class="sr" for="f_preview">Message preview</label><textarea id="f_preview" readonly></textarea></div>
+    </form>`;
+
+  const form = $("#composeForm");
+  const v = id => ($("#" + id) ? $("#" + id).value : "").trim();
+  const need = sell ? ["f_title", "f_price", "f_name", "f_phone", "f_momo"] : ["f_title", "f_name", "f_phone"];
+  const build = () => {
+    const lines = sell ? [
+      "Hello " + SITE.name + ", I would like to sell this item.", "",
+      "Item: " + v("f_title"), "Category: " + catLabel(v("f_cat")), "Price: " + (v("f_price") ? Number(v("f_price")).toLocaleString("en-US") + " " + SITE.currency : ""),
+      "Condition: " + v("f_cond"), "Size: " + v("f_size"), "District: " + v("f_dist"), "Description: " + v("f_desc"), "",
+      "Seller name: " + v("f_name"), "Phone / WhatsApp: " + v("f_phone"), "MoMo number buyers will pay: " + v("f_momo"), "Name on MoMo account: " + v("f_momoname"), "",
+      ...(SITE.listingFeeRWF > 0 ? ["Listing fee paid. Transaction ID: "] : []), "Photos: attached"
+    ] : [
+      "Hello " + SITE.name + ", I am looking for an item.", "",
+      "Looking for: " + v("f_title"), "Category: " + catLabel(v("f_cat")), "Size: " + v("f_size"),
+      "Budget: " + (v("f_price") ? Number(v("f_price")).toLocaleString("en-US") + " " + SITE.currency : ""), "District: " + v("f_dist"), "",
+      "Name: " + v("f_name"), "Phone: " + v("f_phone")
+    ];
+    return { subject: SITE.name + (sell ? ": new listing, " : ": item request, ") + (v("f_title") || "item"), text: lines.join("\n") };
+  };
+  const update = () => {
+    const m = build();
+    $("#mailBtn").href = mailto(m.subject, m.text);
+    $("#waBtn").href = waLink(m.text);
+    $("#f_preview").value = m.text.replace(/\r\n/g, "\n");
+  };
+  const check = e => {
+    const missing = need.filter(id => !v(id));
+    if (!missing.length){ $("#formErr").classList.remove("show"); return true; }
+    if (e) e.preventDefault();
+    const names = { f_title:"item name", f_price:"price", f_name:"your name", f_phone:"your phone", f_momo:"MoMo number for buyers" };
+    $("#formErr").textContent = "Please fill in: " + missing.map(id => names[id]).join(", ") + ".";
+    $("#formErr").classList.add("show");
+    $("#" + missing[0]).focus();
+    return false;
+  };
+  form.addEventListener("input", update);
+  form.addEventListener("submit", e => e.preventDefault());
+  $("#mailBtn").addEventListener("click", check);
+  $("#waBtn").addEventListener("click", check);
+  $("#copyBtn").addEventListener("click", () => { if (check()) copyText(build().text.replace(/\r\n/g, "\n")); });
+  update();
+  openOverlay($("#formOverlay")); $("#formOverlay").scrollTop = 0;
+}
+
+renderTabs(); renderNav(); renderGrid(); route();
+})();
+</script>
+</body>
+</html>
